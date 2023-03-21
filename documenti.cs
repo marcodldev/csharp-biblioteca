@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Environment;
 
 namespace csharp_biblioteca
+
+ 
 {
     public class UtenteRegistrato
     {
@@ -19,16 +22,57 @@ namespace csharp_biblioteca
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Cognome: {Cognome}, Email: {Email}, Recapito telefonico: {RecapitoTelefonico}";
+            return $"Nome: {Nome} " + NewLine
+               + $"Cognome: {Cognome}" + NewLine
+               + $"Email: {Email}" + NewLine
+               + $"Recapito telefonico: {RecapitoTelefonico}" + NewLine;
         }
 
     }
 
     public class Documenti
     {
+        public int Id { get; set; }
+        public string? Titolo { get; set; }
+        public int Anno { get; set; }
+        public string? Settore { get; set; }
+        public string? Scaffale { get; set; }
+        public string? Autore { get; set; }
 
 
+        public override string ToString()
+        {
+            return $"Codice Identificativo: {Id} " + NewLine
+               + $"Titolo: {Titolo}" + NewLine
+               + $"Anno: {Anno}" + NewLine
+               + $"Settore: {Settore}" + NewLine
+               + $"Scaffale: {Scaffale}" + NewLine
+               + $"Autore: {Autore}" + NewLine
+               ;
+        }
+    }
 
+    public class Libri : Documenti
+    {
+
+        public int Npagine { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString() 
+                + $"Numero Pagine: {Npagine}";
+        }
+    }
+
+    public class DVD : Documenti
+    {
+        public int Durata { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString()  
+                + $"Durata: {Durata}";
+        }
     }
 
     /* Gli utenti registrati possono prendere in prestito dei documenti che sono di vario tipo (libri, DVD).
